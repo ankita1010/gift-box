@@ -5,12 +5,13 @@ import './App.scss';
 const App = () => {
 	return (
 		<div className="app-block">
+			<div className="bg"></div>
 			<div className="big-wrapper">
-				<div className="cube-front">Front</div>
-				<div className="cube-back">Back</div>
-				<div className="cube-right">Right</div>
-				<div className="cube-left">Left</div>
-				<div className="cube-bottom">Bottom</div>
+				<div className="cube-face cube-front">Front</div>
+				<div className="cube-face cube-back">Back</div>
+				<div className="cube-face cube-right">Right</div>
+				<div className="cube-face cube-left">Left</div>
+				<div className="cube-face cube-bottom">Bottom</div>
 				<div className="lid-wrapper">
 				<div className="lid-front">Front</div>
 				<div className="lid-back">Back</div>

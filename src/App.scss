@@ -2,6 +2,7 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
 		"Helvetica Neue", sans-serif;
 	margin: 0;
+	background-color: #151623;
 }
 $faces: (
 	front: lime,
@@ -22,6 +23,15 @@ $half-lid-size: $lid-size / 2;
 	justify-content: center;
 	perspective: 1000px;
 	perspective-origin: top; 
+	position: relative;
+	.bg {
+		height: 400px;
+		width: 600px;
+		background-image: radial-gradient(closest-side, whitesmoke 1%, #151623 99%);
+		position: absolute;
+		bottom: 0;
+		top: 0;
+	}
 	* {
 		color: transparent;
 	}
@@ -30,6 +40,10 @@ $half-lid-size: $lid-size / 2;
 		animation: rotatecube 5s infinite linear;
 		position: relative;
 		margin-top: 100px;
+		z-index: 1;
+		.cube-face {
+			background: radial-gradient(#f30b10, #7f0002);
+			}
 		@each $face, $color in $faces {
 			.cube-#{$face} {
 				width: $size;
@@ -41,7 +55,7 @@ $half-lid-size: $lid-size / 2;
 				align-items: center;
 				justify-content: center;
 				top: 0px;
-				border: 1px solid white;
+				border: 1px solid #7f0002;
 				transform-style: preserve-3d;
 				// transform-origin: 0px;
 			}
@@ -78,14 +92,15 @@ $half-lid-size: $lid-size / 2;
 				width: $lid-size;
 				transform-style: preserve-3d;
 				height: 50px;
-				background-color: gold;
+				background: radial-gradient(#f30b10, #7f0002);
 				color: transparent;
 				position: absolute;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				top: 0px;
-				border: 1px solid white;
+				border-bottom: 1px solid #7f0002;
+				z-index: 1;
 				// transform-origin: 0px;
 			}
 		}
