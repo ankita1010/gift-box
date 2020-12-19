@@ -1,0 +1,129 @@
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+		"Helvetica Neue", sans-serif;
+	margin: 0;
+}
+$faces: (
+	front: lime,
+	back: black,
+	left: slategray,
+	right: slateblue,
+	bottom: rgb(255, 145, 0),
+	top: red,
+);
+$size: 200px;
+$half-size: $size / 2;
+$lid-size: 230px;
+$half-lid-size: $lid-size / 2;
+.app-block {
+	font-weight: 400;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	perspective: 1000px;
+	perspective-origin: top; 
+	* {
+		color: transparent;
+	}
+	.big-wrapper {
+		transform-style: preserve-3d;
+		animation: rotatecube 5s infinite linear;
+		position: relative;
+		margin-top: 100px;
+		@each $face, $color in $faces {
+			.cube-#{$face} {
+				width: $size;
+				height: $size;
+				background-color: red;
+				color: transparent;
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				top: 0px;
+				border: 1px solid white;
+				transform-style: preserve-3d;
+				// transform-origin: 0px;
+			}
+		}
+		.cube-front {
+			transform: translateX(-$half-size) translateY(-00px) translateZ($half-size);
+		}
+
+		.cube-back {
+			transform: translateZ(-$half-size) translateX(-$half-size);
+		}
+
+		.cube-right {
+			transform: rotateY(90deg);
+		}
+
+		.cube-left {
+			transform: rotateY(90deg) translateZ(-$size);
+		}
+
+		.cube-bottom {
+			transform: rotateX(90deg) translateX(-$half-size) translateZ(-$half-size);
+		}
+	}
+
+	.lid-wrapper {
+		transform-style: preserve-3d;
+		position: relative;
+		animation: rotatelid 3s infinite linear;
+		// transform: translateY(-$half-lid-size);
+		margin-top: -5px;
+		@each $face, $color in $faces {
+			.lid-#{$face} {
+				width: $lid-size;
+				transform-style: preserve-3d;
+				height: 50px;
+				background-color: gold;
+				color: transparent;
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				top: 0px;
+				border: 1px solid white;
+				// transform-origin: 0px;
+			}
+		}
+		.lid-left {
+			transform: rotateY(90deg) translateZ(-$lid-size);
+		}
+		.lid-back {
+			transform: translateX(-$half-lid-size) translateZ($half-lid-size);
+		}
+		.lid-right {
+			transform: rotateY(90deg);	
+		}
+		.lid-front {
+			transform: translateX(-$half-lid-size) translateZ(-$half-lid-size);
+		}
+
+		.lid-top {
+			height: $lid-size;
+			transform: rotateX(90deg) translateZ($half-lid-size) translateX(-$half-lid-size);
+
+		}
+	}
+}
+@keyframes rotatecube {
+	0% {
+		transform: rotate3d(0, 0, 0, 0) ;
+	}
+	100% {
+		transform: rotate3d(0, 1, 0, 360deg); 
+	}
+}
+
+@keyframes rotatelid {
+	0% { transform: translate3d(0, 0, 0) rotateX(0) }
+	5% { transform: translate3d(0, -10px, -5px) rotateX(5deg) }
+	10% { transform: translate3d(0, -10px, 5px) rotateX(-5deg) }
+	15% { transform: translate3d(0, -10px, -5px) rotateX(5deg) }
+	20% { transform: translate3d(0, -10px, 5px) rotateX(-5deg) }
+	25% { transform: translate3d(0, -10px, -5px) rotateX(5deg)}
+	30% { transform: translate3d(0, 0, 0) rotateX(0) }
+}
