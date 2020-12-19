@@ -5,7 +5,7 @@ import './App.scss';
 const App = () => {
 	return (
 		<div className="app-block">
-			<div className="bg"></div>
+			<div className="box-shadow" />
 			<div className="big-wrapper">
 				<div className="cube-face cube-front">Front</div>
 				<div className="cube-face cube-back">Back</div>
