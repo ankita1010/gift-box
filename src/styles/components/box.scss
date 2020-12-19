@@ -1,0 +1,122 @@
+@import '../colors';
+@import '../mixins';
+
+// change the size and the rest would fall in place
+$size: 150px;
+
+// derived
+$lid-offset: 0.15 * $size;
+$lid-height: $size / 4;
+$box-border: $lid-offset / 5;
+$half-size: $size / 2;
+$double-size: $size * 2;
+$shadow-offset: $size + $half-size;
+$lid-width: $size + $lid-offset;
+$half-lid-width: $lid-width / 2;
+
+.app-block {
+	font-weight: 400;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	perspective: 100vh;
+	perspective-origin: top; 
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background: radial-gradient(circle at center, $blue-night-light 0%, $blue-night-dark);
+}
+
+.box-shadow {
+    background: radial-gradient($shadow-grey 10%, transparent 60%);
+    height: $size;
+    width: $double-size;
+    max-width: 100%;
+    position: absolute;
+    margin-top: $shadow-offset;
+}
+
+.box-wrapper {
+    transform-style: preserve-3d;
+    animation: rotatecube 5s infinite linear;
+    position: relative;
+    margin-top: -$size;
+    z-index: 1;
+    .cube-face {
+        background: radial-gradient($light-red, $dark-red);
+        width: $size;
+        height: $size;
+        color: transparent;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0px;
+        border: $box-border solid $gold;
+        box-sizing: border-box;
+        transform-style: preserve-3d;
+    }
+    .cube-front {
+        transform: translateX(-$half-size) translateY(-00px) translateZ($half-size);
+    }
+
+    .cube-back {
+        transform: translateZ(-$half-size) translateX(-$half-size);
+    }
+
+    .cube-right {
+        transform: rotateY(90deg);
+    }
+
+    .cube-left {
+        transform: rotateY(90deg) translateZ(-$size);
+    }
+
+    .cube-bottom {
+        transform: rotateX(90deg) translateX(-$half-size) translateZ(-$half-size);
+    }
+}
+
+.lid-wrapper {
+    transform-style: preserve-3d;
+    position: relative;
+    animation: rotatelid 3s infinite linear;
+    margin-top: -$box-border;
+    .lid-face {
+        width: $lid-width;
+        transform-style: preserve-3d;
+        height: $lid-height;
+        background: radial-gradient($light-red, $dark-red);
+        color: transparent;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0px;
+        box-sizing: border-box;
+        border: $box-border solid $gold;
+        z-index: 1;
+    }
+
+    .lid-left {
+        transform: rotateY(90deg) translateZ(-$lid-width);
+    }
+
+    .lid-back {
+        transform: translateX(-$half-lid-width) translateZ($half-lid-width);
+    }
+
+    .lid-right {
+        transform: rotateY(90deg);	
+    }
+
+    .lid-front {
+        transform: translateX(-$half-lid-width) translateZ(-$half-lid-width);
+    }
+
+    .lid-top {
+        height: $lid-width;
+        transform: rotateX(90deg) translateZ($half-lid-width) translateX(-$half-lid-width);
+
+    }
+}
