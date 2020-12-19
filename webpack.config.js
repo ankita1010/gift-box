@@ -28,9 +28,9 @@ const config = function (env) {
 			new MiniCssExtractPlugin({
 				filename: "styles/[name].built.css"
 			}),
-			// new ManifestPlugin({
-			// 	generate: () => manifestJson
-			// })
+			new ManifestPlugin({
+				generate: () => manifestJson
+			})
 		],
 		optimization: {
 			splitChunks: {
