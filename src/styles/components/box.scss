@@ -9,7 +9,7 @@
     $box-border: $lid-offset / 5;
     $half-size: $size / 2;
     $double-size: $size * 2;
-    $shadow-offset: $double-size + $half-size;
+    $shadow-offset: $double-size;
     $lid-width: $size + $lid-offset;
     $half-lid-width: $lid-width / 2;
 
