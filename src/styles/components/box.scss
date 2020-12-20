@@ -9,7 +9,7 @@
     $box-border: $lid-offset / 5;
     $half-size: $size / 2;
     $double-size: $size * 2;
-    $shadow-offset: $double-size;
+    $shadow-offset: $double-size + ($half-size / 2);
     $lid-width: $size + $lid-offset;
     $half-lid-width: $lid-width / 2;
 
@@ -65,7 +65,7 @@
     .lid-wrapper {
         transform-style: preserve-3d;
         position: relative;
-        animation: rotatelid 3s infinite linear;
+        @include lid-rotate($size);
         margin-top: -$box-border;
         .lid-face {
             width: $lid-width;
