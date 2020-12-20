@@ -9,7 +9,7 @@
 
 @mixin lid-rotate($size) {
 	$offset: 0.01 * $size;
-	animation: rotatelid 3s infinite linear;
+	animation: rotatelid 3s infinite linear 8s;
 	@keyframes rotatelid {
 		0% { transform: translate3d(0, 0, 0) rotateX(0) }
 		5% { transform: translate3d(0, -$offset, -$offset / 2) rotateX(5deg) }

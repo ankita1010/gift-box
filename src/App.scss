@@ -14,7 +14,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: radial-gradient(farthest-corner at 80vw calc(25vh + 7.5vw), $blue-night-light 0%, $blue-night-dark);
+    background: radial-gradient(circle at 80.5vw calc(25vh + 7.5vw), $gold 0%, $blue-night-light 13%, $blue-night-dark);
     @include box-styles($size: 5vw);
 }
 
@@ -25,7 +25,8 @@ body {
 	width: 100vw;
     height: 100vh;
     overflow: hidden;
-    animation: zoom-in-again 1s ease-out 9s;
+    will-change: transform;
+    animation: zoom-in 1s ease-out 8.5s;
     animation-fill-mode: forwards;
 }
 
@@ -40,7 +41,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: hop-in 0.5s ease-out 11s;
+    will-change: transform;
+    animation: hop-in 1s ease-out 10s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -49,10 +51,10 @@ body {
     z-index: 3;
     position: absolute;
     left: 0;
-    bottom: -1vw;
+    bottom: -1vh;
     right: 0;
     width: 100vw;
-    max-width: 1300px;
+    max-width: 1200px;
     img {
         width: 100%;
     }
@@ -86,7 +88,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: run-past 5s ease-out 6s;
+    will-change: transform;
+    animation: run-past 10s ease-out 6s;
     animation-fill-mode: forwards;
     img {
         width: 100%;
@@ -130,21 +133,25 @@ body {
     }
 }
 
-@keyframes zoom-in-again {
+@keyframes zoom-in {
     0% {
         transform: scale(1);
     }
     100% {
         transform: scale(calc(100 / 39));
-        transform-origin: right 30%;
+        transform-origin: right 30vh;
     }
 }
 
 @keyframes run-past {
-    0% {
-        transform: translate(0);   
-    }
-    100% {
-        transform: translateX(152vw);
+    @for $i from 0 through 20 {
+        #{$i * 5%} {
+            @if $i % 2 == 0 {
+                transform: translate($i * 15.2vw, 1vh);
+            }
+            @else {
+                transform: translate($i * 15.2vw, -1vh);
+            }
+        }
     }
 }

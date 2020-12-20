@@ -13,6 +13,7 @@
     }
     i {
         display: inline-block;
+        will-change: transform;
         animation: snowflakes 3s linear 2s 20;
         position: relative;
     }

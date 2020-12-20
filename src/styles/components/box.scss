@@ -24,11 +24,11 @@
 
     .box-wrapper {
         transform-style: preserve-3d;
-        animation: rotatecube 5s infinite linear;
+        animation: rotatecube 5s infinite linear 8s;
         position: relative;
         z-index: 1;
         .cube-face {
-            background: radial-gradient($light-red, $dark-red);
+            background: radial-gradient($blue-night-light, $blue-night-dark);
             width: $size;
             height: $size;
             color: transparent;
@@ -71,7 +71,7 @@
             width: $lid-width;
             transform-style: preserve-3d;
             height: $lid-height;
-            background: radial-gradient($light-red, $dark-red);
+            background: radial-gradient($blue-night-light, $blue-night-dark);
             color: transparent;
             position: absolute;
             display: flex;
