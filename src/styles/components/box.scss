@@ -66,6 +66,9 @@
         position: relative;
         @include lid-rotate($size);
         margin-top: -$box-border;
+        &.unwrapped-lid {
+            @include lid-pops-up;
+        }
         .lid-face {
             width: $lid-width;
             transform-style: preserve-3d;
