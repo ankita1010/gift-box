@@ -71,7 +71,7 @@ body {
     top: calc(50vh - 7.5vw);
     right: 12vw;
     width: 15vw;
-    animation: moon-rise 4s linear 1s;
+    animation: moon-rise $moon-rise-duration linear $moon-rise-delay;
     animation-fill-mode: forwards;
     opacity: 0;
     img {
