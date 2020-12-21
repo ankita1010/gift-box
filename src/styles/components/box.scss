@@ -40,6 +40,7 @@
             box-sizing: border-box;
             transform-style: preserve-3d;
             transition: transform 0.3s;
+            will-change: transform;
         }
         .cube-front {
             transform: translateX(-$half-size) translateY(-00px) translateZ($half-size) rotateX(0deg);
@@ -54,7 +55,7 @@
         .cube-right {
             transform: rotateY(90deg);
             transform-origin: bottom;
-         }
+        }
 
         .cube-left {
             transform: rotateY(90deg) translateZ(-$size);
@@ -112,21 +113,73 @@
     }
 
     .unwrapped-box {
-        .cube-face {
-            transition: transform 0.3s 0.3s;
+        .box-wrapper {
+            animation-play-state: paused;
+            .cube-face {
+                transition: transform 0.3s 0.3s;
+            }
+            .cube-front {
+                transform: translateX(-$half-size) translateY(-00px) translateZ($half-size) rotateX(-90deg);
+                animation: free-fall-front 1s linear forwards 0.6s;
+            }
+            .cube-back {
+                transform: translateZ(-$half-size) translateX(-$half-size) rotateX(90deg);
+                animation: free-fall-back 1s linear forwards 0.6s;
+            }
+            .cube-left {
+                transform: rotateY(90deg) translateZ(-(unquote($half-size) + $size)) translateY($half-size)
+                    rotateX(90deg);
+                    animation: free-fall-left 1s linear forwards 0.6s;
+            }
+            .cube-right {
+                transform: rotateY(90deg) rotateX(-90deg);
+                animation: free-fall-right 1s linear forwards 0.6s;
+            }
+            .cube-bottom{
+                animation: free-fall-bottom 1s linear forwards 0.6s;
+            }
         }
-        .cube-front {
-            transform: translateX(-$half-size) translateY(-00px) translateZ($half-size) rotateX(-90deg);
+        @keyframes free-fall-front {
+            0% {
+                transform: translateX(-$half-size) translateY(-00px) translateZ($half-size) rotateX(-90deg);
+            }
+            100% {
+                transform: translateX(-$half-size) translateY(50vh) translateZ($half-size + 30) rotateX(-90deg);
+            }
         }
-        .cube-back {
-            transform: translateZ(-$half-size) translateX(-$half-size) rotateX(90deg);
+        @keyframes free-fall-back {
+            0% {
+                transform: translateZ(-$half-size) translateX(-$half-size) rotateX(90deg);
+            }
+            100% {
+                transform: translateZ(-$half-size + 10) translateY(50vh) translateX(-$half-size) rotateX(90deg);
+            }
         }
-        .cube-left {
-            transform: rotateY(90deg) translateZ(-(unquote($half-size) + $size)) translateY($half-size) rotateX(90deg);
+        @keyframes free-fall-left {
+            0% {
+                transform: rotateY(90deg) translateZ(-(unquote($half-size) + $size)) translateY($half-size)
+                    rotateX(90deg);
+            }
+            100% {
+                transform: rotateY(90deg) translateZ(-(unquote($half-size) + $size) + 10) translateY(50vh)
+                    rotateX(90deg);
+            }
         }
-        .cube-right {
-            transform: rotateY(90deg) rotateX(-90deg);
+        @keyframes free-fall-right{
+            0% {
+                transform: rotateY(90deg) rotateX(-90deg);
+            }
+            100% {
+                transform: rotateY(90deg) rotateX(-90deg) translateY(-20vw) translateZ(50vh);
+            }
+        }
+        @keyframes free-fall-bottom{
+            0% {
+                transform: rotateX(90deg) translateX(-$half-size) translateZ(-$half-size);
+            }
+            100% {
+                transform: rotateX(90deg) translateX(-$half-size) translateZ(-50vh);
+            }
         }
     }
 }
-
