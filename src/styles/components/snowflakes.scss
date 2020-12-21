@@ -9,19 +9,19 @@
     i,
     i:after,
     i:before {
-        background: $gold;
+        background-color: $gold;
     }
     i {
         display: inline-block;
         will-change: transform;
-        animation: snowflakes 3s linear 2s 20;
+        animation: snowflakes 3s linear 0s 20;
         position: relative;
     }
     i:after,
     i:before {
         height: 100%;
         width: 100%;
-        content: ".";
+        content: "";
         position: absolute;
         top: 0px;
         left: 0px;

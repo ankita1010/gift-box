@@ -1,7 +1,6 @@
 @import "../colors";
 @import "../mixins";
-
-// change the size and the rest would fall in place
+@import "../constants";
 
 @mixin box-styles($size) {
     $lid-offset: 0.15 * $size;
@@ -24,7 +23,7 @@
 
     .box-wrapper {
         transform-style: preserve-3d;
-        animation: rotatecube 5s infinite linear 8s;
+        animation: rotatecube $rotate-cube-duration infinite linear $rotate-cube-delay;
         position: relative;
         z-index: 1;
         .cube-face {

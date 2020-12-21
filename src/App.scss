@@ -14,8 +14,18 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: radial-gradient(circle at 80.5vw calc(25vh + 7.5vw), $gold 0%, $blue-night-light 13%, $blue-night-dark);
+    animation: animate-background 4s linear 1s;
+    animation-fill-mode: forwards;
+    background: radial-gradient(circle at 80.5vw calc(125vh + 7.5vw), $gold 0%, $blue-night-light 13%, $blue-night-dark);
     @include box-styles($size: 5vw);
+}
+
+@keyframes animate-background {
+    @for $i from 0 through 100 {
+        #{$i * 1%} {
+            background: radial-gradient(circle at 80.5vw calc(125vh + 7.5vw - (#{$i} * 1vh)), $gold 0%, $blue-night-light 13%, $blue-night-dark);
+        }
+    }
 }
 
 .app-body {
@@ -26,7 +36,7 @@ body {
     height: 100vh;
     overflow: hidden;
     will-change: transform;
-    animation: zoom-in 1s ease-out 8.5s;
+    animation: zoom-in $zoom-in-duration ease-out $zoom-in-delay;
     animation-fill-mode: forwards;
 }
 
@@ -42,7 +52,7 @@ body {
     align-items: center;
     justify-content: center;
     will-change: transform;
-    animation: hop-in 1s ease-out 10s;
+    animation: hop-in $hop-in-duration ease-out $hop-in-delay;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -55,6 +65,10 @@ body {
     right: 0;
     width: 100vw;
     max-width: 1200px;
+    animation: slide-in-bottom $slide-in-bottom-duration ease-in $slide-in-bottom-delay;
+    animation-fill-mode: forwards;
+    will-change: transform;
+    opacity: 0;
     img {
         width: 100%;
     }
@@ -74,6 +88,9 @@ body {
     top: 25vh;
     right: 12vw;
     width: 15vw;
+    animation: moon-rise 4s linear 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
     img {
         width: 100%;
     }
@@ -89,7 +106,7 @@ body {
     justify-content: center;
     align-items: center;
     will-change: transform;
-    animation: run-past 10s ease-out 6s;
+    animation: run-past $run-past-duration ease-out $run-past-delay;
     animation-fill-mode: forwards;
     img {
         width: 100%;
@@ -100,58 +117,20 @@ body {
     position: absolute;
     z-index: 5;
     right: 10px;
-    top: 50px;
+    bottom: 10px;
     width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: white;
-    background-color: rgba(112, 112, 112, 0.6);
+    color: $gold;
+    background-color: $faded-gold;
     outline: none;
     border: none;
     padding: 12px;
     border-radius: 50%;
     img {
         width: 100%;
-    }
-}
-
-@keyframes hop-in {
-    0% {
-        opacity: 0;
-        transform: translateY(100vh);
-    }
-    95% {
-        opacity: 1;
-        transform: translateY(2vh);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes zoom-in {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(calc(100 / 39));
-        transform-origin: right 30vh;
-    }
-}
-
-@keyframes run-past {
-    @for $i from 0 through 20 {
-        #{$i * 5%} {
-            @if $i % 2 == 0 {
-                transform: translate($i * 15.2vw, 1vh);
-            }
-            @else {
-                transform: translate($i * 15.2vw, -1vh);
-            }
-        }
     }
 }

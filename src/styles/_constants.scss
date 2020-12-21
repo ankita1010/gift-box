@@ -1,0 +1,15 @@
+$run-past-duration: 10s;
+$zoom-in-duration: 1s;
+$hop-in-duration: 2s;
+$rotate-cube-duration: 5s;
+$rotate-lid-duration: 3s;
+$slide-in-bottom-duration: 0.5s;
+$slide-in-top-duration: 0.2s;
+
+$run-past-delay: 4s;
+$zoom-in-delay: 6.5s;
+$hop-in-delay: 8s;
+$slide-in-top-delay: 0s;
+$slide-in-bottom-delay: 0.5s;
+$rotate-cube-delay: $hop-in-delay;
+$rotate-lid-delay: $hop-in-delay;

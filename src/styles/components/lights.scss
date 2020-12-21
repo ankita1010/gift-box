@@ -1,3 +1,6 @@
+@import "../constants";
+@import "../mixins";
+
 .lightrope {
     text-align: center;
     white-space: nowrap;
@@ -7,9 +10,13 @@
     height: 100px;
     z-index: 1;
     margin: -15px 0 0 0;
+    animation: slide-in-top $slide-in-top-duration ease-in $slide-in-top-delay;
+    animation-fill-mode: forwards;
+    will-change: transform;
     padding: 0;
     pointer-events: none;
     width: 100%;
+    opacity: 0;
 }
 
 .lightrope li {
