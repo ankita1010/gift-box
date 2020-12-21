@@ -8,6 +8,7 @@ import moon from "./assets/moon.svg";
 import sleigh from "./assets/christmas-sleigh.svg";
 
 import fullscreen from "./assets/fullscreen.svg";
+import refresh from "./assets/refresh.svg";
 
 import "./App.scss";
 
@@ -25,10 +26,17 @@ const App = () => {
     }
   }
 
+  const refreshScreen = () => {
+    window.location.reload();
+  }
+
   return (
     <div ref={appRef}>
       <button onClick={toggleFullScreen} className="fullscreen-button">
         <img src={fullscreen} />
+      </button>
+      <button onClick={refreshScreen} className="refresh-button">
+        <img src={refresh} />
       </button>
       <div className="app-body">
         <div className="background">
