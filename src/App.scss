@@ -9,6 +9,7 @@ body {
     background-color: gray;
     overflow: hidden;
 }
+$radial-bg: radial-gradient(circle at 80.5vw calc(125vh + 7.5vw), $gold 0%, $blue-night-light 13%, $blue-night-dark);
 
 .background {
     width: 100vw;
@@ -16,7 +17,7 @@ body {
     overflow: hidden;
     animation: animate-background 4s linear 1s;
     animation-fill-mode: forwards;
-    background: radial-gradient(circle at 80.5vw calc(125vh + 7.5vw), $gold 0%, $blue-night-light 13%, $blue-night-dark);
+    background: $radial-bg;
     @include box-styles($size: 5vw);
 }
 
