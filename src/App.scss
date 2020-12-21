@@ -97,7 +97,7 @@ body {
     }
 }
 
-.fullscreen-button {
+.fullscreen-button, .refresh-button {
     position: absolute;
     z-index: 5;
     right: 10px;
@@ -117,4 +117,8 @@ body {
     img {
         width: 100%;
     }
+}
+
+.refresh-button {
+    bottom: 70px;
 }
