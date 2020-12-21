@@ -2,22 +2,15 @@
 
 .snowflakes {
     width: 100vw;
-    height: 150vh;
+    height: 200vh;
     overflow: hidden;
     position: absolute;
-    top: -50vh;
+    top: -100vh;
     left: 0;
-    i{
-        background: $snowflake-url 100% center no-repeat;
-        width: 50px;
-        height: 50px;
-    }
-    // i,
-    // i:after,
-    // i:before {
-    //     background-color: $gold;
-    // }
     i {
+        background: $snowflake-url 100% center no-repeat;
+        width: 20px;
+        height: 20px;
         display: inline-block;
         will-change: transform;
         animation: snowflakes 5s linear 0s 20;
@@ -45,9 +38,9 @@
         transform-origin: right -45px;
     }
     i:nth-child(3n + 1) {
-        width: 80px;
-        height: 80px;
-        background-size: 80px;
+        width: 50px;
+        height: 50px;
+        background-size: 50px;
         animation-duration: 6s;
         animation-iteration-count: 45;
         transform-origin: right -30px;
@@ -102,6 +95,6 @@
         transform: translate3d(0, 0, 0) rotate(0deg) scale(0.6);
     }
     100% {
-        transform: translate3d(15px, 150vh, 0px) rotate(360deg) scale(0.6);
+        transform: translate3d(15px, 200vh, 0px) rotate(360deg) scale(0.6);
     }
 }
