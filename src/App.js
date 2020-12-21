@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import { Lights } from "./Lights";
 import { Snowflakes } from "./Snowflakes";
@@ -13,6 +13,7 @@ import "./App.scss";
 
 const App = () => {
   const appRef = useRef(null);
+  const [isGiftUnwrapped, setIsGiftUnwrapped] = useState(false);
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -42,20 +43,20 @@ const App = () => {
           <div className="sleigh">
             <img src={sleigh} />
           </div>
-          <div className="box-container">
+          <div className="box-container" onClick={() => {setIsGiftUnwrapped(!isGiftUnwrapped)}}>
             <div className="box-shadow" />
             <div className="box-wrapper">
-              <div className="cube-face cube-front">Front</div>
-              <div className="cube-face cube-back">Back</div>
-              <div className="cube-face cube-right">Right</div>
-              <div className="cube-face cube-left">Left</div>
-              <div className="cube-face cube-bottom">Bottom</div>
-              <div className="lid-wrapper">
-                <div className="lid-face lid-front">Front</div>
-                <div className="lid-face lid-back">Back</div>
-                <div className="lid-face lid-right">Right</div>
-                <div className="lid-face lid-left">Left</div>
-                <div className="lid-face lid-top">Top</div>
+              <div className="cube-face cube-front"></div>
+              <div className="cube-face cube-back"></div>
+              <div className="cube-face cube-right"></div>
+              <div className="cube-face cube-left"></div>
+              <div className="cube-face cube-bottom"></div>
+              <div className={`lid-wrapper ${isGiftUnwrapped ? 'unwrapped-lid' : ''}`}>
+                <div className="lid-face lid-front"></div>
+                <div className="lid-face lid-back"></div>
+                <div className="lid-face lid-right"></div>
+                <div className="lid-face lid-left"></div>
+                <div className="lid-face lid-top"></div>
               </div>
             </div>
           </div>
