@@ -14,18 +14,8 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    animation: animate-background 4s linear 1s;
-    animation-fill-mode: forwards;
-    background: radial-gradient(circle at 80.5vw calc(125vh + 7.5vw), $gold 0%, $blue-night-light 13%, $blue-night-dark);
+    background: radial-gradient(circle at 80.5vw calc(25vh + 7.5vw), $blue-night-light 13%, $blue-night-dark);
     @include box-styles($size: 5vw);
-}
-
-@keyframes animate-background {
-    @for $i from 0 through 100 {
-        #{$i * 1%} {
-            background: radial-gradient(circle at 80.5vw calc(125vh + 7.5vw - (#{$i} * 1vh)), $gold 0%, $blue-night-light 13%, $blue-night-dark);
-        }
-    }
 }
 
 .app-body {
@@ -37,12 +27,13 @@ body {
     overflow: hidden;
     will-change: transform;
     animation: zoom-in $zoom-in-duration ease-out $zoom-in-delay;
+    transform-origin: right 50vh;
     animation-fill-mode: forwards;
 }
 
 .box-container {
     width: 15vw;
-    height: calc(50vh + 10vw);
+    height: calc(100vh - 5vw);
     margin-left: 73vw;
     margin-right: 12vw;
     perspective: 100vh;
@@ -71,21 +62,13 @@ body {
     opacity: 0;
     img {
         width: 100%;
-    }
-}
-
-.christmas-tree {
-    position: absolute;
-    bottom: 2vw;
-    max-width: 20vw;
-    img {
-        width: 100%;
+        filter: drop-shadow(0 0 1rem $blue-night-dark);
     }
 }
 
 .moon {
     position: absolute;
-    top: 25vh;
+    top: calc(50vh - 7.5vw);
     right: 12vw;
     width: 15vw;
     animation: moon-rise 4s linear 1s;
@@ -93,12 +76,13 @@ body {
     opacity: 0;
     img {
         width: 100%;
+        filter: drop-shadow(0 0 2rem $gold);
     }
 }
 
 .sleigh {
     position: absolute;
-    top: calc(25vh + 1vw);
+    top: calc(50vh - 6.5vw);
     left: -26vw;
     width: 13vw;
     height: 13vw;
