@@ -39,18 +39,22 @@
             border: $box-border solid $gold;
             box-sizing: border-box;
             transform-style: preserve-3d;
+            transition: transform 0.3s;
         }
         .cube-front {
-            transform: translateX(-$half-size) translateY(-00px) translateZ($half-size);
+            transform: translateX(-$half-size) translateY(-00px) translateZ($half-size) rotateX(0deg);
+            transform-origin: bottom;
         }
 
         .cube-back {
             transform: translateZ(-$half-size) translateX(-$half-size);
+            transform-origin: bottom;
         }
 
         .cube-right {
             transform: rotateY(90deg);
-        }
+            transform-origin: bottom;
+         }
 
         .cube-left {
             transform: rotateY(90deg) translateZ(-$size);
@@ -104,6 +108,24 @@
         .lid-top {
             height: $lid-width;
             transform: rotateX(90deg) translateZ($half-lid-width) translateX(-$half-lid-width);
+        }
+    }
+
+    .unwrapped-box {
+        .cube-face {
+            transition: transform 0.3s 0.3s;
+        }
+        .cube-front {
+            transform: translateX(-$half-size) translateY(-00px) translateZ($half-size) rotateX(-90deg);
+        }
+        .cube-back {
+            transform: translateZ(-$half-size) translateX(-$half-size) rotateX(90deg);
+        }
+        .cube-left {
+            transform: rotateY(90deg) translateZ(-(unquote($half-size) + $size)) translateY($half-size) rotateX(90deg);
+        }
+        .cube-right {
+            transform: rotateY(90deg) rotateX(-90deg);
         }
     }
 }

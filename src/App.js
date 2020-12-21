@@ -51,7 +51,7 @@ const App = () => {
           <div className="sleigh">
             <img src={sleigh} />
           </div>
-          <div className="box-container" onClick={() => {setIsGiftUnwrapped(!isGiftUnwrapped)}}>
+          <div className={`box-container ${isGiftUnwrapped ? 'unwrapped-box' : ''}`} onClick={() => {setIsGiftUnwrapped(!isGiftUnwrapped)}}>
             <div className="box-shadow" />
             <div className="box-wrapper">
               <div className="cube-face cube-front"></div>
