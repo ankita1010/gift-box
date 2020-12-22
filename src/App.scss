@@ -10,11 +10,14 @@ body {
     overflow: hidden;
 }
 
-.background {
+.backdrop, .background {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     background: radial-gradient(circle at 80.5vw calc(25vh + 7.5vw), $blue-night-light 13%, $blue-night-dark);
+}
+
+.background {
     @include box-styles($size: 5vw);
 }
 
@@ -79,7 +82,7 @@ body {
     opacity: 0;
     img {
         width: 100%;
-        filter: drop-shadow(0 0 2rem $gold);
+        filter: drop-shadow(0 0 2vw $gold);
     }
 }
 
@@ -100,7 +103,22 @@ body {
     }
 }
 
-.fullscreen-button, .refresh-button {
+.christmas-card {
+    position: absolute;
+    top: calc(50vh - 5vw);
+    right: 14.5vw;
+    width: 10vw;
+    animation: hop-in $hop-in-duration ease-out $christmas-card-delay;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    img {
+        width: 100%;
+    }
+}
+
+// wrapper
+
+.fullscreen-button, .refresh-button, .play-button {
     position: absolute;
     z-index: 5;
     right: 10px;
@@ -126,15 +144,28 @@ body {
     bottom: 70px;
 }
 
-.christmas-card {
-    position: absolute;
-    top: calc(50vh - 5vw);
-    right: 14.5vw;
-    width: 10vw;
-    animation: hop-in $hop-in-duration ease-out $christmas-card-delay;
-    opacity: 0;
-    animation-fill-mode: forwards;
+.play-button {
+    width: 70px;
+    height: 70px;
+    top: calc(50vh - 35px);
+    left: calc(50vw - 35px);
+    padding: 10px;
+    box-sizing: border-box;
     img {
-        width: 100%;
+        max-width: 30px;
     }
+}
+
+.toast-message {
+    position: absolute;
+    top: 10px;
+    width: 90vw;
+    max-width: 400px;
+    right: 10px;
+    text-align: right;
+    padding: 10px;
+    color: $gold;
+    background-color: $faded-gold;
+    box-sizing: border-box;
+    border-radius: 10px;
 }

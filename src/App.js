@@ -1,20 +1,15 @@
 import React, { useRef, useState } from "react";
 
-import { Lights } from "./Lights";
-import { Snowflakes } from "./Snowflakes";
-
-import snowfield from "./assets/snowfield.svg";
-import moon from "./assets/moon.svg";
-import sleigh from "./assets/christmas-sleigh.svg";
-import merryChristmas from "./assets/christmas-card.png";
-
 import fullscreen from "./assets/fullscreen.svg";
 import refresh from "./assets/refresh.svg";
+import play from "./assets/play.svg";
 
 import "./App.scss";
+import Christmas from "./Christmas";
 
 const App = () => {
   const appRef = useRef(null);
+  const [playing, toggle] = useState(false);
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -30,48 +25,33 @@ const App = () => {
     window.location.reload(); 
   }
 
+  const startPlaying = () => {
+    toggle(true);
+  }
+
   return (
-    <div ref={appRef}>
+    <div ref={appRef} className="backdrop">
       <button onClick={toggleFullScreen} className="fullscreen-button">
         <img src={fullscreen} />
       </button>
-      <button onClick={refreshScreen} className="refresh-button">
-        <img src={refresh} />
-      </button>
-      <div className="app-body">
-        <div className="background">
-          <Lights />
-          <Snowflakes />
-          <div className="snow-field">
-            <img src={snowfield} />
+      {playing && (
+        <>
+          <button onClick={refreshScreen} className="refresh-button">
+            <img src={refresh} />
+          </button>
+          <Christmas />
+        </>
+      )}
+      {!playing && (
+        <>
+          <button onClick={startPlaying} className="play-button">
+            <img src={play} />
+          </button>
+          <div className="toast-message">
+            If you are on a phone, use the fullscreen mode and rotate to a landscape view for the best experience
           </div>
-          <div className="moon">
-            <img src={moon} />
-          </div>
-          <div className="sleigh">
-            <img src={sleigh} />
-          </div>
-          <div className="christmas-card">
-            <img src={merryChristmas} />
-          </div>
-          <div className="box-container">
-            <div className="box-wrapper">
-              <div className="cube-face cube-front"></div>
-              <div className="cube-face cube-back"></div>
-              <div className="cube-face cube-right"></div>
-              <div className="cube-face cube-left"></div>
-              <div className="cube-face cube-bottom"></div>
-              <div className="lid-wrapper">
-                <div className="lid-face lid-front"></div>
-                <div className="lid-face lid-back"></div>
-                <div className="lid-face lid-right"></div>
-                <div className="lid-face lid-left"></div>
-                <div className="lid-face lid-top"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };
