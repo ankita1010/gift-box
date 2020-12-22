@@ -14,7 +14,6 @@ import "./App.scss";
 
 const App = () => {
   const appRef = useRef(null);
-  const [isGiftUnwrapped, setIsGiftUnwrapped] = useState(false);
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -51,14 +50,14 @@ const App = () => {
           <div className="sleigh">
             <img src={sleigh} />
           </div>
-          <div className={`box-container ${isGiftUnwrapped ? 'unwrapped-box' : ''}`} onClick={() => {setIsGiftUnwrapped(!isGiftUnwrapped)}}>
+          <div className="box-container">
             <div className="box-wrapper">
               <div className="cube-face cube-front"></div>
               <div className="cube-face cube-back"></div>
               <div className="cube-face cube-right"></div>
               <div className="cube-face cube-left"></div>
               <div className="cube-face cube-bottom"></div>
-              <div className={`lid-wrapper ${isGiftUnwrapped ? 'unwrapped-lid' : ''}`}>
+              <div className="lid-wrapper">
                 <div className="lid-face lid-front"></div>
                 <div className="lid-face lid-back"></div>
                 <div className="lid-face lid-right"></div>
