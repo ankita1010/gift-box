@@ -28,15 +28,10 @@ const App = () => {
   }
 
   const startPlaying = () => {
-    Promise.resolve().then(() => {
       toggle(true);
-
-    }).then(() => {
       if (audioRef) {
         audioRef.current.play();
       }
-    })
-
   }
 
   return (
