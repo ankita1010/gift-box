@@ -1,0 +1,100 @@
+@import '../constants';
+
+.snowflakes {
+    width: 100vw;
+    height: 200vh;
+    overflow: hidden;
+    position: absolute;
+    top: -100vh;
+    left: 0;
+    i {
+        background: $snowflake-url 100% center no-repeat;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        will-change: transform;
+        animation: snowflakes 5s linear 0s 20;
+        position: relative;
+    }
+    i:after,
+    i:before {
+        height: 100%;
+        width: 100%;
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transform: rotate(120deg);
+    }
+    i:before {
+        transform: rotate(240deg);
+    }
+    i:nth-child(3n) {
+        width: 30px;
+        height: 30px;
+        background-size: 30px;
+        animation-duration: 4s;
+        animation-iteration-count: 30;
+        transform-origin: right -45px;
+    }
+    i:nth-child(3n + 1) {
+        width: 50px;
+        height: 50px;
+        background-size: 50px;
+        animation-duration: 6s;
+        animation-iteration-count: 45;
+        transform-origin: right -30px;
+    }
+    i:nth-child(3n + 2) {
+        width: 40px;
+        height: 40px;
+        background-size: 40px;
+        animation-duration: 8s;
+        animation-iteration-count: 60;
+        transform-origin: right -15px;
+    }
+    i:nth-child(7n) {
+        opacity: 0.3;
+        animation-delay: 0s;
+        animation-timing-function: ease-in;
+    }
+    i:nth-child(7n + 1) {
+        opacity: 0.4;
+        animation-delay: 1s;
+        animation-timing-function: ease-out;
+    }
+    i:nth-child(7n + 2) {
+        opacity: 0.5;
+        animation-delay: 1.5s;
+        animation-timing-function: linear;
+    }
+    i:nth-child(7n + 3) {
+        opacity: 0.6;
+        animation-delay: 2s;
+        animation-timing-function: ease-in;
+    }
+    i:nth-child(7n + 4) {
+        opacity: 0.7;
+        animation-delay: 2.5s;
+        animation-timing-function: linear;
+    }
+    i:nth-child(7n + 5) {
+        opacity: 0.8;
+        animation-delay: 3s;
+        animation-timing-function: ease-out;
+    }
+    i:nth-child(7n + 6) {
+        opacity: 0.9;
+        animation-delay: 3.5s;
+        animation-timing-function: ease-in;
+    }
+}
+
+@keyframes snowflakes {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.6);
+    }
+    100% {
+        transform: translate3d(15px, 200vh, 0px) rotate(360deg) scale(0.6);
+    }
+}

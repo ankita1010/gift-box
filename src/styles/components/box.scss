@@ -1,0 +1,122 @@
+@import "../colors";
+@import "../mixins";
+@import "../constants";
+
+@mixin box-styles($size) {
+    $lid-offset: 0.15 * $size;
+    $lid-height: $size / 4;
+    $box-border: $lid-offset / 5;
+    $half-size: $size / 2;
+    $double-size: $size * 2;
+    $shadow-offset: $double-size + ($half-size / 2);
+    $lid-width: $size + $lid-offset;
+    $half-lid-width: $lid-width / 2;
+
+    .box-shadow {
+        background: radial-gradient($shadow-grey 10%, transparent 60%);
+        height: $size;
+        width: $double-size;
+        max-width: 100%;
+        position: absolute;
+        margin-top: $shadow-offset;
+    }
+
+    .box-wrapper {
+        transform-style: preserve-3d;
+        animation: rotatecube $rotate-cube-duration linear $rotate-cube-delay;
+        animation-fill-mode: forwards;
+        position: relative;
+        z-index: 1;
+        .cube-face {
+            background: radial-gradient($blue-night-light, $blue-night-dark);
+            width: $size;
+            height: $size;
+            color: transparent;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 0px;
+            border: $box-border solid $gold;
+            box-sizing: border-box;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .cube-front {
+            transform: translateX(-$half-size) translateY(-00px) translateZ($half-size) rotateX(0deg);
+            transform-origin: bottom;
+            animation: free-fall-front $free-fall-duration linear forwards $free-fall-delay;
+            animation-fill-mode: forwards;
+        }
+
+        .cube-back {
+            transform: translateZ(-$half-size) translateX(-$half-size);
+            transform-origin: bottom;
+            animation: free-fall-back $free-fall-duration linear forwards $free-fall-delay;
+            animation-fill-mode: forwards;
+        }
+
+        .cube-right {
+            transform: rotateY(90deg);
+            transform-origin: bottom;
+            animation: free-fall-right $free-fall-duration linear forwards $free-fall-delay;
+            animation-fill-mode: forwards;
+        }
+
+        .cube-left {
+            transform: rotateY(90deg) translateZ(-$size);
+            transform-origin: bottom;
+            animation: free-fall-left $free-fall-duration linear forwards $free-fall-delay;
+            animation-fill-mode: forwards;
+        }
+
+        .cube-bottom {
+            transform: rotateX(90deg) translateX(-$half-size) translateZ(-$half-size);
+            animation: free-fall-bottom $free-fall-duration linear forwards $free-fall-delay;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    .lid-wrapper {
+        transform-style: preserve-3d;
+        position: relative;
+        @include lid-rotate($size);
+        margin-top: -$box-border;
+        .lid-face {
+            width: $lid-width;
+            transform-style: preserve-3d;
+            height: $lid-height;
+            background: radial-gradient($blue-night-light, $blue-night-dark);
+            color: transparent;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 0px;
+            box-sizing: border-box;
+            border: $box-border solid $gold;
+            z-index: 1;
+        }
+
+        .lid-left {
+            transform: rotateY(90deg) translateZ(-$lid-width);
+        }
+
+        .lid-back {
+            transform: translateX(-$half-lid-width) translateZ($half-lid-width);
+        }
+
+        .lid-right {
+            transform: rotateY(90deg);
+        }
+
+        .lid-front {
+            transform: translateX(-$half-lid-width) translateZ(-$half-lid-width);
+        }
+
+        .lid-top {
+            height: $lid-width;
+            transform: rotateX(90deg) translateZ($half-lid-width) translateX(-$half-lid-width);
+        }
+    }
+}

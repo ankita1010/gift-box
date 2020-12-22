@@ -1,150 +1,171 @@
+@import './styles/components/box.scss';
+@import './styles/components/lights.scss';
+@import './styles/components/snowflakes.scss';
+
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
 		"Helvetica Neue", sans-serif;
 	margin: 0;
-	background-color: #151623;
+    background-color: gray;
+    overflow: hidden;
 }
-$faces: (
-	front: lime,
-	back: black,
-	left: slategray,
-	right: slateblue,
-	bottom: rgb(255, 145, 0),
-	top: red,
-);
-$size: 200px;
-$half-size: $size / 2;
-$lid-size: 230px;
-$half-lid-size: $lid-size / 2;
-.app-block {
-	font-weight: 400;
+
+.backdrop, .background {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at 80.5vw calc(25vh + 7.5vw), $blue-night-light 13%, $blue-night-dark);
+}
+
+.background {
+    @include box-styles($size: 5vw);
+}
+
+.app-body {
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	perspective: 100vh;
-	perspective-origin: top; 
-	position: relative;
+	align-items: center;
 	width: 100vw;
-	height: 100vh;
-	background: radial-gradient(circle at center,#335c84 0%,#151623);
-	* {
-		color: transparent;
-	}
-	.box-shadow {
-		background: radial-gradient(#2c2c2c 10%, transparent 60%);
-		margin-top: 400px;
-		height: 150px;
-		width: 400px;
-		max-width: 100%;
-		position: absolute;
-		margin-top: 350px;
-	}
-	.big-wrapper {
-		transform-style: preserve-3d;
-		animation: rotatecube 5s infinite linear;
-		position: relative;
-		margin-top: -200px;
-		z-index: 1;
-		.cube-face {
-			background: radial-gradient(#f30b10, #7f0002);
-		}
-		@each $face, $color in $faces {
-			.cube-#{$face} {
-				width: $size;
-				height: $size;
-				background-color: red;
-				color: transparent;
-				position: absolute;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				top: 0px;
-				border: 5px solid #C89568;
-				box-sizing: border-box;
-				transform-style: preserve-3d;
-				// transform-origin: 0px;
-			}
-		}
-		.cube-front {
-			transform: translateX(-$half-size) translateY(-00px) translateZ($half-size);
-		}
-
-		.cube-back {
-			transform: translateZ(-$half-size) translateX(-$half-size);
-		}
-
-		.cube-right {
-			transform: rotateY(90deg);
-		}
-
-		.cube-left {
-			transform: rotateY(90deg) translateZ(-$size);
-		}
-
-		.cube-bottom {
-			transform: rotateX(90deg) translateX(-$half-size) translateZ(-$half-size);
-		}
-	}
-
-	.lid-wrapper {
-		transform-style: preserve-3d;
-		position: relative;
-		animation: rotatelid 3s infinite linear;
-		// transform: translateY(-$half-lid-size);
-		margin-top: -5px;
-		@each $face, $color in $faces {
-			.lid-#{$face} {
-				width: $lid-size;
-				transform-style: preserve-3d;
-				height: 50px;
-				background: radial-gradient(#f30b10, #7f0002);
-				color: transparent;
-				position: absolute;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				top: 0px;
-				box-sizing: border-box;
-				border: 5px solid #C89568;
-				z-index: 1;
-				// transform-origin: 0px;
-			}
-		}
-		.lid-left {
-			transform: rotateY(90deg) translateZ(-$lid-size);
-		}
-		.lid-back {
-			transform: translateX(-$half-lid-size) translateZ($half-lid-size);
-		}
-		.lid-right {
-			transform: rotateY(90deg);	
-		}
-		.lid-front {
-			transform: translateX(-$half-lid-size) translateZ(-$half-lid-size);
-		}
-
-		.lid-top {
-			height: $lid-size;
-			transform: rotateX(90deg) translateZ($half-lid-size) translateX(-$half-lid-size);
-
-		}
-	}
-}
-@keyframes rotatecube {
-	0% {
-		transform: rotate3d(0, 0, 0, 0) ;
-	}
-	100% {
-		transform: rotate3d(0, 1, 0, 360deg); 
-	}
+    height: 100vh;
+    overflow: hidden;
+    @include zoom-in(calc(100/29));
+    transform-origin: 93vw 50vh;
+    will-change: transform;
+    @media only screen and (min-width: 600px) {
+        transform-origin: 100vw 50vh;
+        @include zoom-in(calc(100/39));
+    }
 }
 
-@keyframes rotatelid {
-	0% { transform: translate3d(0, 0, 0) rotateX(0) }
-	5% { transform: translate3d(0, -10px, -5px) rotateX(5deg) }
-	10% { transform: translate3d(0, -10px, 5px) rotateX(-5deg) }
-	15% { transform: translate3d(0, -10px, -5px) rotateX(5deg) }
-	20% { transform: translate3d(0, -10px, 5px) rotateX(-5deg) }
-	25% { transform: translate3d(0, -10px, -5px) rotateX(5deg)}
-	30% { transform: translate3d(0, 0, 0) rotateX(0) }
+.box-container {
+    width: 15vw;
+    height: calc(100vh - 5vw);
+    margin-left: 73vw;
+    margin-right: 12vw;
+    perspective: 100vh;
+    perspective-origin: top;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+    animation: hop-in $hop-in-duration ease-out $hop-in-delay;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.snow-field {
+    z-index: 3;
+    position: absolute;
+    left: 0;
+    bottom: -1vh;
+    right: 0;
+    width: 100vw;
+    max-width: 1200px;
+    animation: slide-in-bottom $slide-in-bottom-duration ease-in $slide-in-bottom-delay;
+    animation-fill-mode: forwards;
+    will-change: transform;
+    opacity: 0;
+    img {
+        width: 100%;
+        filter: drop-shadow(0 0 1rem $blue-night-dark);
+    }
+}
+
+.moon {
+    position: absolute;
+    top: calc(50vh - 7.5vw);
+    right: 12vw;
+    width: 15vw;
+    animation: moon-rise $moon-rise-duration linear $moon-rise-delay;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    img {
+        width: 100%;
+        filter: drop-shadow(0 0 2vw $gold);
+    }
+}
+
+.sleigh {
+    position: absolute;
+    top: calc(50vh - 6.5vw);
+    left: -26vw;
+    width: 13vw;
+    height: 13vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform;
+    animation: run-past $run-past-duration ease-out $run-past-delay;
+    animation-fill-mode: forwards;
+    img {
+        width: 100%;
+    }
+}
+
+.christmas-card {
+    position: absolute;
+    top: calc(50vh - 5vw);
+    right: 14.5vw;
+    width: 10vw;
+    animation: hop-in $hop-in-duration ease-out $christmas-card-delay;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    img {
+        width: 100%;
+    }
+}
+
+// wrapper
+
+.fullscreen-button, .refresh-button, .play-button {
+    position: absolute;
+    z-index: 5;
+    right: 10px;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: $gold;
+    background-color: $faded-gold;
+    outline: none;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    img {
+        width: 100%;
+    }
+}
+
+.refresh-button {
+    bottom: 70px;
+}
+
+.play-button {
+    width: 70px;
+    height: 70px;
+    top: calc(50vh - 35px);
+    left: calc(50vw - 35px);
+    padding: 10px;
+    box-sizing: border-box;
+    img {
+        max-width: 30px;
+    }
+}
+
+.toast-message {
+    position: absolute;
+    top: 10px;
+    width: 90vw;
+    max-width: 400px;
+    right: 10px;
+    text-align: right;
+    padding: 10px;
+    color: $gold;
+    background-color: $faded-gold;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
