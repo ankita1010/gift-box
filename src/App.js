@@ -6,10 +6,12 @@ import play from "./assets/play.svg";
 
 import "./App.scss";
 import Christmas from "./Christmas";
+import jingleBells from "./assets/jingle_bells.mp3";
 
 const App = () => {
   const appRef = useRef(null);
   const [playing, toggle] = useState(false);
+  const audioRef = useRef(null);
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -22,11 +24,19 @@ const App = () => {
   }
 
   const refreshScreen = () => {
-    window.location.reload(); 
+    window.location.reload();
   }
 
   const startPlaying = () => {
-    toggle(true);
+    Promise.resolve().then(() => {
+      toggle(true);
+
+    }).then(() => {
+      if (audioRef) {
+        audioRef.current.play();
+      }
+    })
+
   }
 
   return (
@@ -39,9 +49,12 @@ const App = () => {
           <button onClick={refreshScreen} className="refresh-button">
             <img src={refresh} />
           </button>
-          <Christmas />
         </>
       )}
+      <Christmas playing={playing} />
+      <audio ref={audioRef}>
+        <source src={jingleBells} />
+      </audio>
       {!playing && (
         <>
           <button onClick={startPlaying} className="play-button">
