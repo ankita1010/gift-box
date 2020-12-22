@@ -26,7 +26,7 @@ const App = () => {
   }
 
   const refreshScreen = () => {
-    window.location.reload();
+    window.location.reload(); 
   }
 
   return (
@@ -51,6 +51,7 @@ const App = () => {
             <img src={sleigh} />
           </div>
           <div className="box-container">
+            <img/>
             <div className="box-wrapper">
               <div className="cube-face cube-front"></div>
               <div className="cube-face cube-back"></div>
