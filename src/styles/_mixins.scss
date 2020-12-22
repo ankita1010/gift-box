@@ -101,15 +101,9 @@
         0% {
             transform: translateY(0vh) translateX(0vw);
         }
-        5% {
-            transform: translateY(-5vh) translateX(-5vw);
-        }
-        90% {
-            transform: translateY(-100vh) translateX(-15vw);
-        }
         100% {
             display: none;
-            transform: translateY(-100vh) translateX(-10vw);
+            transform: translateY(-60vh) translateX(0vw);
         }
     }
 }

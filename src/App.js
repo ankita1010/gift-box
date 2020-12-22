@@ -52,7 +52,6 @@ const App = () => {
             <img src={sleigh} />
           </div>
           <div className={`box-container ${isGiftUnwrapped ? 'unwrapped-box' : ''}`} onClick={() => {setIsGiftUnwrapped(!isGiftUnwrapped)}}>
-            <div className="box-shadow" />
             <div className="box-wrapper">
               <div className="cube-face cube-front"></div>
               <div className="cube-face cube-back"></div>
