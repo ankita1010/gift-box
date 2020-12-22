@@ -6,6 +6,7 @@ import { Snowflakes } from "./Snowflakes";
 import snowfield from "./assets/snowfield.svg";
 import moon from "./assets/moon.svg";
 import sleigh from "./assets/christmas-sleigh.svg";
+import merryChristmas from "./assets/christmas-card.png";
 
 import fullscreen from "./assets/fullscreen.svg";
 import refresh from "./assets/refresh.svg";
@@ -50,8 +51,10 @@ const App = () => {
           <div className="sleigh">
             <img src={sleigh} />
           </div>
+          <div className="christmas-card">
+            <img src={merryChristmas} />
+          </div>
           <div className="box-container">
-            <img/>
             <div className="box-wrapper">
               <div className="cube-face cube-front"></div>
               <div className="cube-face cube-back"></div>

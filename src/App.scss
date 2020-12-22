@@ -25,10 +25,13 @@ body {
 	width: 100vw;
     height: 100vh;
     overflow: hidden;
+    @include zoom-in(calc(100/29));
+    transform-origin: 93vw 50vh;
     will-change: transform;
-    animation: zoom-in $zoom-in-duration ease-out $zoom-in-delay;
-    transform-origin: right 50vh;
-    animation-fill-mode: forwards;
+    @media only screen and (min-width: 600px) {
+        transform-origin: 100vw 50vh;
+        @include zoom-in(calc(100/39));
+    }
 }
 
 .box-container {
@@ -121,4 +124,17 @@ body {
 
 .refresh-button {
     bottom: 70px;
+}
+
+.christmas-card {
+    position: absolute;
+    top: calc(50vh - 5vw);
+    right: 14.5vw;
+    width: 10vw;
+    animation: hop-in $hop-in-duration ease-out $christmas-card-delay;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    img {
+        width: 100%;
+    }
 }
