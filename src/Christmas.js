@@ -7,23 +7,12 @@ import snowfield from "./assets/snowfield.svg";
 import moon from "./assets/moon.svg";
 import sleigh from "./assets/christmas-sleigh.svg";
 import merryChristmas from "./assets/christmas-card.png";
-import jingleBells from "./assets/jingle_bells.mp3";
 
-const Christmas = () => {
-  const audioRef = useRef(null);
-
-  useEffect(() => {
-    if (audioRef){
-      audioRef.current.play();
-    }
-  }, []);
-
+const Christmas = ({playing}) => {
   return (
       <>
-      <audio ref={audioRef}>
-        <source src={jingleBells} />
-      </audio>
-      <div className="app-body">
+     
+      <div className="app-body" style={{opacity: playing ? 1 : 0}}>
         <div className="background">
           <Lights />
           <Snowflakes />
