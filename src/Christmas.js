@@ -9,10 +9,11 @@ import sleigh from "./assets/christmas-sleigh.svg";
 import merryChristmas from "./assets/christmas-card.png";
 
 const Christmas = ({playing}) => {
+  if(!playing) return null;
   return (
       <>
      
-      <div className="app-body" style={{opacity: playing ? 1 : 0}}>
+      <div className="app-body">
         <div className="background">
           <Lights />
           <Snowflakes />
